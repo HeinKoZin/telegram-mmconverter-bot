@@ -5,8 +5,8 @@ A [Telegram](https://telegram.org) bot which allows you to converter zg <-> uni.
 ## Usage 
 
 - Go to https://telegram.me/MMConverterBot and install it.
-- Use "/z <Your Zg text>" for Zg to Uni conversion.
-- Use "/u <Your Uni text>" for Uni to Zg conversion.
+- Use "/z \<Your Zg text\>" for Zg to Uni conversion.
+- Use "/u \<Your Uni text\>" for Uni to Zg conversion.
 - The default is Zg to Uni converston.
 
 ## Development 
