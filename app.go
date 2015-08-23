@@ -54,10 +54,10 @@ func convert(input string, isZg bool) string {
 	var err error
 
 	if isZg {
-		input = strings.Replace(input, "/z ", "", -1)
+		input = strings.Replace(input, "/z ", "", 1)
 		resp, err = http.PostForm(zg2uniApi, url.Values{"q": {input}, "key": {mmConverterApiKey}})
 	} else {
-		input = strings.Replace(input, "/u ", "", -1)
+		input = strings.Replace(input, "/u ", "", 1)
 		resp, err = http.PostForm(uni2zgApi, url.Values{"q": {input}, "key": {mmConverterApiKey}})
 	}
 
