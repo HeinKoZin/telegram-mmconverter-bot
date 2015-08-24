@@ -27,6 +27,8 @@ func main() {
 	bot, err := telebot.NewBot(os.Getenv("TELEGRAM_MMCONVERTER_TOKEN"))
 	panicIf(err)
 
+    fmt.Println("Bot started.")
+
 	messages := make(chan telebot.Message)
 	bot.Listen(messages, 1*time.Second)
 
@@ -42,6 +44,8 @@ func main() {
 		} else if uniInput {
 			convertedUniString := convert(message.Text, false)
 			bot.SendMessage(message.Chat, convertedUniString, nil)
+        } else if message.Text == "/start" {
+            bot.SendMessage(message.Chat, "meow ", nil)
 		} else {
 			convertedUniString := convert(message.Text, true)
 			bot.SendMessage(message.Chat, convertedUniString, nil)
