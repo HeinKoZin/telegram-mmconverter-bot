@@ -9,7 +9,7 @@ var help =  "အသုံးပြုပုံကတော့ \n" +
 "Bot source code ကတော့  https://github.com/yelinaung/telegram-mmconverter-bot မှာပါ \n"+ 
 "Font convert လုပ်တာ လွဲနေတယ်ဆိုရင် https://github.com/Rabbit-Converter/Rabbit/issues မှာ report လုပ်နိုင်ပါတယ်။ " ;
 
-var counter;
+var counter = 0;
 
 bot.on('text', function (msg) {
   var chatId = msg.chat.id;
