@@ -1,0 +1,34 @@
+var TelegramBot = require('node-telegram-bot-api');
+var rabbit = require('./rabbit.min');
+var token = process.env.TELEGRAM_MMCONVERTER_TOKEN;
+var bot = new TelegramBot(token, {polling: true});
+
+var help =  "အသုံးပြုပုံကတော့ \n" + 
+"'/z မဂၤလာပါ' ဆိုရင် 'မင်္ဂလာပါ' \n"  + 
+"'/u မင်္ဂလာပါ' ဆိုရင် 'မဂၤလာပါ' \n" + 
+"Bot source code ကတော့  https://github.com/yelinaung/telegram-mmconverter-bot မှာပါ \n"+ 
+"Font convert လုပ်တာ လွဲနေတယ်ဆိုရင် https://github.com/Rabbit-Converter/Rabbit/issues မှာ report လုပ်နိုင်ပါတယ်။ " ;
+
+bot.on('text', function (msg) {
+  var chatId = msg.chat.id;
+
+  // Help
+  if (msg.text == '/help') {
+    bot.sendMessage(chatId, help);
+  }
+
+  // Zg to Uni
+  zg2uni = /\/z */.test(msg.text);
+  if (zg2uni) {
+    x = msg.text.replace(/\/z*/,"").trim();
+    bot.sendMessage(chatId, rabbit.zg2uni(x));
+  }
+
+  // Uni to Zg
+  uni2zg = /\/u */.test(msg.text);
+  if (uni2zg) {
+    x = msg.text.replace(/\/u*/,"").trim();
+    bot.sendMessage(chatId, rabbit.uni2zg(x));
+  }
+});
+
