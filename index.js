@@ -9,6 +9,8 @@ var help =  "အသုံးပြုပုံကတော့ \n" +
 "Bot source code ကတော့  https://github.com/yelinaung/telegram-mmconverter-bot မှာပါ \n"+ 
 "Font convert လုပ်တာ လွဲနေတယ်ဆိုရင် https://github.com/Rabbit-Converter/Rabbit/issues မှာ report လုပ်နိုင်ပါတယ်။ " ;
 
+var counter;
+
 bot.on('text', function (msg) {
   var chatId = msg.chat.id;
 
@@ -30,5 +32,8 @@ bot.on('text', function (msg) {
     x = msg.text.replace(/\/u*/,"").trim();
     bot.sendMessage(chatId, rabbit.uni2zg(x));
   }
+
+  counter++;
+  console.log("Total request " + counter);
 });
 
