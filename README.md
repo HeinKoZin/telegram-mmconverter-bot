@@ -11,17 +11,19 @@ A [Telegram](https://telegram.org) bot which allows you to converter zg <-> uni.
 
 ## Development 
 
-Please install [Go](http://www.golang.org) and set up first, if you haven't.
+Please install [Node](http://nodejs.org/) and set up first, if you haven't.
 
 ```bash
-$ go get github.com/yelinaung/telegram-mmconverter-bot
-$ cd $GOPATH/src/github.com/yelinaung/telegram-mmconverter-bot
-$ export TELEGRAM_MMCONVERTER_TOKEN="your token" && export HEXCORE_MMCONVERTER_TOKEN="token" && go run app.go
+$ git clone https://github.com/yelinaung/telegram-mmconverter-bot
+$ cd telegram-mmconverter-bot
+$ npm install
+$ export TELEGRAM_MMCONVERTER_TOKEN="your token" && node index.js
 ```
 
 ## Credits
 
-Thanks to [MMConverter](http://mmconverter.hexcores.com) API by [Hexcores](http://hexcores.com).
+Previous version replied on third party API for font converting. 
+Althought the new version no longer use it , special thanks to [MMConverter](http://mmconverter.hexcores.com) API by [Hexcores](http://hexcores.com).
 
 ## License
 MIT
