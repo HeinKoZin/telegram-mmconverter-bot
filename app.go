@@ -25,14 +25,18 @@ var uni2zgApi = "http://mmconverter.hexcores.com/api/v1/uni2zg"
 func main() {
 
 	bot, err := telebot.NewBot(os.Getenv("TELEGRAM_MMCONVERTER_TOKEN"))
-	panicIf(err)
+	if err != nil {
+		fmt.Println("Couldn't create bot:", err)
+	}
 
-    fmt.Println("Bot started.")
+	fmt.Println("Bot started.")
 
 	messages := make(chan telebot.Message)
 	bot.Listen(messages, 1*time.Second)
 
 	for message := range messages {
+		fmt.Println("msg ", message.Text)
+
 		zgInput, _ := regexp.MatchString("/z *", message.Text)
 		uniInput, _ := regexp.MatchString("/u *", message.Text)
 		if message.Text == "/hi" {
@@ -44,8 +48,8 @@ func main() {
 		} else if uniInput {
 			convertedUniString := convert(message.Text, false)
 			bot.SendMessage(message.Chat, convertedUniString, nil)
-        } else if message.Text == "/start" {
-            bot.SendMessage(message.Chat, "meow ", nil)
+		} else if message.Text == "/start" {
+			bot.SendMessage(message.Chat, "meow ", nil)
 		} else {
 			convertedUniString := convert(message.Text, true)
 			bot.SendMessage(message.Chat, convertedUniString, nil)
@@ -81,6 +85,7 @@ func convert(input string, isZg bool) string {
 
 func panicIf(err error) {
 	if err != nil {
+		fmt.Println(err)
 		panic(err)
 	}
 }
