@@ -14,21 +14,19 @@ var counter = 0;
 bot.on('text', function (msg) {
   var chatId = msg.chat.id;
 
-  // Help
-  if (msg.text == '/help') {
-    bot.sendMessage(chatId, help);
-  }
-
   // Zg to Uni
   zg2uni = /\/z */.test(msg.text);
-  if (zg2uni) {
-    x = msg.text.replace(/\/z*/,"").trim();
-    bot.sendMessage(chatId, rabbit.zg2uni(x));
-  }
 
   // Uni to Zg
   uni2zg = /\/u */.test(msg.text);
-  if (uni2zg) {
+
+  // Help
+  if (msg.text == '/help') {
+    bot.sendMessage(chatId, help);
+  } else if (zg2uni) {
+    x = msg.text.replace(/\/z*/,"").trim();
+    bot.sendMessage(chatId, rabbit.zg2uni(x));
+  } if (uni2zg) {
     x = msg.text.replace(/\/u*/,"").trim();
     bot.sendMessage(chatId, rabbit.uni2zg(x));
   }
